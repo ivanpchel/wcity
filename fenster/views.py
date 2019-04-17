@@ -4,28 +4,32 @@ from django.shortcuts import render
 #from django.http import HttpResponse
 #from django.template import loader
 
-import random
+from .models import Fenster
+from random import randint
+
 
 def index(request):
-   # template = loader.get_template('fenster/index.html')
-
-    a = random.randint(50, 100)
-    b = random.randint(50, 100)
-    c = random.randint(50, 100)
-
-    colors = ["ffccaa", "aaccff", "cffacs", "12caf1", "25faca", "2312ff"]
-    sel1 = random.randint(0, 5)
-    sel2 = random.randint(0, 5)
-    color1 = colors[sel1]
-    color2 = colors[sel2]
-
+   
+   # test_creation(1)
+   # test_creation(2)
+   # test_creation(3)
+   # test_creation(4)
+   # test_creation(5)
+    
+    fenster_list = Fenster.objects.order_by("id")
+    
     context = {
-        "a": a,
-        "b": b,
-        "c": c,
-        "color1": color1,
-        "color2": color2
+	"window_list": fenster_list,	
     }
+
     #return HttpResponse(template.render(context))
     return render(request, 'fenster/index.html', context)
 
+def test_creation(number):
+
+    f = Fenster(
+        window_width=randint(100, 256),
+        window_height=randint(100, 256),
+        window_number=number,
+    )
+    f.save()

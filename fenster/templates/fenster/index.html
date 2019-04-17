@@ -1,25 +1,15 @@
 <h1>Мой html</h1>
 <table border="6px">
     <tr height="20px">
-        <td>заголовок 1</td>
-        <td>заголовок 1</td>
-        <td>заголовок 1</td>
+        <td><b>Номер окна</b></td>
+        <td><b>Ширина</b></td>
+        <td><b>Высота</b></td>
     </tr>
-    <tr height="{{a}}px">
-        <td colspan="2" style="background-color: #{{color1}}">1.1</td>
-        <td>1.3&nbsp;test</td>
-    </tr>
+    {% for window in window_list  %}
     <tr>
-        <td height="{{b}}" style="background-color: #{{color2}}" >2.1</td>
-        <td>2.2</td>
-        <td>2.3</td>
+        <td>{{ window.window_number }}</td>
+        <td>{{ window.window_width }}</td>
+        <td>{{ window.window_height }}</td>
     </tr>
-    <tr>
-        <td>3.1</td>
-        <td height="{{c}}">3.2</td>
-        <td>3.3</td>
-    </tr>    
+    {% endfor  %}
 </table>
-<select name="testselect">
-    <option value="55">пять пять</option>
-</select>
